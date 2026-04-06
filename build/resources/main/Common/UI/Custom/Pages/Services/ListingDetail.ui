@@ -1,0 +1,166 @@
+$C = "../../Common.ui";
+
+@PrimaryBtn = TextButtonStyle(
+  Default: (Background: #4A9E5C, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5CB870, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3C8048, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@BackBtn = TextButtonStyle(
+  Default: (Background: #4a5568, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5a6578, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3a4558, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+$C.@PageOverlay {
+
+  Group {
+    Anchor: (Width: 500, Height: 420);
+    Background: #141c26(0.98);
+    LayoutMode: Top;
+
+    // Header
+    Group {
+      Anchor: (Height: 40);
+      Background: #1a2332;
+      Padding: (Horizontal: 12);
+
+      Label #DetailTitle {
+        Text: "Service Details";
+        Style: (FontSize: 18, TextColor: #ffffff, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    Group { Anchor: (Height: 12); }
+
+    // Provider info
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 24);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Provider:";
+        Anchor: (Width: 80);
+        Style: (FontSize: 13, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #ProviderName {
+        Text: "";
+        Style: (FontSize: 13, TextColor: #ffffff, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 24);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Profession:";
+        Anchor: (Width: 80);
+        Style: (FontSize: 13, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #ProfessionLabel {
+        Text: "";
+        Style: (FontSize: 13, TextColor: #4A9E5C, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    Group { Anchor: (Height: 1); Background: #2b3542; Padding: (Horizontal: 16); }
+    Group { Anchor: (Height: 8); }
+
+    // Title
+    Label #ListingTitle {
+      Text: "";
+      Anchor: (Height: 28);
+      Padding: (Horizontal: 16);
+      Style: (FontSize: 16, TextColor: #ffffff, RenderBold: true);
+    }
+
+    // Description
+    Label #ListingDesc {
+      Text: "";
+      Anchor: (Height: 40);
+      Padding: (Horizontal: 16);
+      Style: (FontSize: 12, TextColor: #bbbbbb);
+    }
+
+    Group { Anchor: (Height: 4); }
+
+    // Price
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 28);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Price:";
+        Anchor: (Width: 60);
+        Style: (FontSize: 14, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #PriceLabel {
+        Text: "0 coins";
+        Style: (FontSize: 14, TextColor: #FFD700, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    Group { Anchor: (Height: 1); Background: #2b3542; Padding: (Horizontal: 16); }
+    Group { Anchor: (Height: 8); }
+
+    // Hire section (hidden by default)
+    Group #HireSection {
+      LayoutMode: Top;
+      Visible: false;
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Notes for provider (optional):";
+        Anchor: (Height: 22);
+        Style: (FontSize: 12, TextColor: #96a9be);
+      }
+
+      TextField #NotesInput {
+        Anchor: (Height: 32);
+        Padding: (Horizontal: 8);
+        Background: #0a1119;
+        Style: $C.@DefaultInputFieldStyle;
+        PlaceholderText: "Describe what you need...";
+      }
+
+      Group { Anchor: (Height: 8); }
+
+      TextButton #HireBtn {
+        Text: "HIRE THIS PROVIDER";
+        Anchor: (Height: 36);
+        Style: @PrimaryBtn;
+      }
+    }
+
+    // Error
+    Label #ErrorLabel {
+      Text: "";
+      Anchor: (Height: 22);
+      Visible: false;
+      Style: (FontSize: 12, TextColor: #ff6b6b, HorizontalAlignment: Center);
+    }
+
+    Group { FlexWeight: 1; }
+
+    // Footer
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 44);
+      Padding: (Horizontal: 16, Vertical: 6);
+
+      TextButton #BackBtn {
+        Text: "< Back";
+        Anchor: (Width: 80, Height: 32);
+        Style: @BackBtn;
+      }
+
+      Group { FlexWeight: 1; }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "Group": "com.hcservices",
+  "Name": "HC_Professions_Services",
+  "Version": "1.0.0",
+  "Description": "Services board for profession-based player services",
+  "Authors": [{"Name": "Server Admin"}],
+  "ServerVersion": "0.0.2",
+  "IncludesAssetPack": true,
+  "Dependencies": {
+    "Hytale:EntityModule": "*"
+  },
+  "OptionalDependencies": {
+    "ModServer:HC_Professions": "*"
+  },
+  "DisabledByDefault": false,
+  "Main": "com.hcservices.HC_ServicesPlugin"
+}

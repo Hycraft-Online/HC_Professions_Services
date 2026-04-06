@@ -1,0 +1,164 @@
+$C = "../../Common.ui";
+
+@PrimaryBtn = TextButtonStyle(
+  Default: (Background: #4A9E5C, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5CB870, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3C8048, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@CancelBtn = TextButtonStyle(
+  Default: (Background: #4a5568, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5a6578, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3a4558, LabelStyle: (FontSize: 14, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+$C.@PageOverlay {
+
+  Group {
+    Anchor: (Width: 450, Height: 400);
+    Background: #141c26(0.98);
+    LayoutMode: Top;
+
+    // Header
+    Group {
+      Anchor: (Height: 40);
+      Background: #1a2332;
+      Padding: (Horizontal: 12);
+
+      Label #FormTitle {
+        Text: "Create Service Listing";
+        Style: (FontSize: 18, TextColor: #ffffff, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    Group { Anchor: (Height: 12); }
+
+    // Profession display
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 28);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Profession:";
+        Anchor: (Width: 90);
+        Style: (FontSize: 13, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+
+      Label #ProfLabel {
+        Text: "None";
+        Style: (FontSize: 13, TextColor: #4A9E5C, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    Group { Anchor: (Height: 8); }
+
+    // Title input
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 38);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Title:";
+        Anchor: (Width: 90);
+        Style: (FontSize: 13, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+
+      TextField #TitleInput {
+        FlexWeight: 1;
+        Anchor: (Height: 32);
+        Padding: (Horizontal: 8);
+        Background: #0a1119;
+        Style: $C.@DefaultInputFieldStyle;
+        PlaceholderText: "Service title (required)";
+      }
+    }
+
+    Group { Anchor: (Height: 8); }
+
+    // Description input
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 38);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Description:";
+        Anchor: (Width: 90);
+        Style: (FontSize: 13, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+
+      TextField #DescInput {
+        FlexWeight: 1;
+        Anchor: (Height: 32);
+        Padding: (Horizontal: 8);
+        Background: #0a1119;
+        Style: $C.@DefaultInputFieldStyle;
+        PlaceholderText: "Describe your service";
+      }
+    }
+
+    Group { Anchor: (Height: 8); }
+
+    // Price input
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 38);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Price (coins):";
+        Anchor: (Width: 90);
+        Style: (FontSize: 13, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+
+      TextField #PriceInput {
+        Anchor: (Width: 120, Height: 32);
+        Padding: (Horizontal: 8);
+        Background: #0a1119;
+        Style: $C.@DefaultInputFieldStyle;
+        PlaceholderText: "0";
+      }
+    }
+
+    Group { Anchor: (Height: 8); }
+
+    // Error label
+    Label #ErrorLabel {
+      Text: "";
+      Anchor: (Height: 22);
+      Visible: false;
+      Style: (FontSize: 12, TextColor: #ff6b6b, HorizontalAlignment: Center);
+    }
+
+    Group { FlexWeight: 1; }
+
+    // Buttons
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 44);
+      Padding: (Horizontal: 16, Vertical: 4);
+
+      Group { FlexWeight: 1; }
+
+      TextButton #SubmitBtn {
+        Text: "CREATE";
+        Anchor: (Width: 110, Height: 36);
+        Style: @PrimaryBtn;
+      }
+
+      Group { Anchor: (Width: 12); }
+
+      TextButton #CancelFormBtn {
+        Text: "CANCEL";
+        Anchor: (Width: 110, Height: 36);
+        Style: @CancelBtn;
+      }
+
+      Group { FlexWeight: 1; }
+    }
+  }
+}

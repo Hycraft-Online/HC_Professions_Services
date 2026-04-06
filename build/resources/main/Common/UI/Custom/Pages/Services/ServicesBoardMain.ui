@@ -1,0 +1,226 @@
+$C = "../../Common.ui";
+
+@TabActive = TextButtonStyle(
+  Default: (Background: #4A9E5C, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5CB870, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3C8048, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@TabInactive = TextButtonStyle(
+  Default: (Background: #2a2a3e, LabelStyle: (FontSize: 13, TextColor: #aaaaaa, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #3a3a4e, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #1a1a2e, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@ActionBtn = TextButtonStyle(
+  Default: (Background: #4A9E5C, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5CB870, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3C8048, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@FilterBtn = TextButtonStyle(
+  Default: (Background: #2a2a3e, LabelStyle: (FontSize: 11, TextColor: #bbbbbb, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #3a3a4e, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #1a1a2e, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@FilterActive = TextButtonStyle(
+  Default: (Background: #4A9E5C, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5CB870, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3C8048, LabelStyle: (FontSize: 11, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@NavBtn = TextButtonStyle(
+  Default: (Background: #333350, LabelStyle: (FontSize: 12, TextColor: #cccccc, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #444468, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #222240, LabelStyle: (FontSize: 12, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+$C.@PageOverlay {
+
+  Group {
+    Anchor: (Width: 700, Height: 500);
+    Background: #141c26(0.98);
+    LayoutMode: Top;
+
+    // Header
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 40);
+      Background: #1a2332;
+      Padding: (Horizontal: 12);
+
+      Label #PageTitle {
+        Text: "Services Board";
+        Style: (FontSize: 18, TextColor: #ffffff, RenderBold: true, VerticalAlignment: Center);
+        Anchor: (Width: 200);
+      }
+
+      Group { FlexWeight: 1; }
+
+      TextButton #CloseBtn {
+        Text: "X";
+        Anchor: (Width: 32, Height: 28);
+        Style: @NavBtn;
+      }
+    }
+
+    // Tab bar
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 36);
+      Background: #0f1720;
+      Padding: (Horizontal: 8, Vertical: 4);
+
+      TextButton #TabBrowse {
+        Text: "Browse";
+        FlexWeight: 1;
+        Anchor: (Height: 28, Right: 4);
+        Style: @TabActive;
+      }
+
+      TextButton #TabMyListings {
+        Text: "My Listings";
+        FlexWeight: 1;
+        Anchor: (Height: 28, Right: 4);
+        Style: @TabInactive;
+      }
+
+      TextButton #TabMyContracts {
+        Text: "My Contracts";
+        FlexWeight: 1;
+        Anchor: (Height: 28);
+        Style: @TabInactive;
+      }
+    }
+
+    // Filter row (browse tab only)
+    Group #FilterRow {
+      LayoutMode: Left;
+      Anchor: (Height: 30);
+      Background: #1a2332;
+      Padding: (Horizontal: 6, Vertical: 3);
+
+      TextButton #FilterAll {
+        Text: "All";
+        Anchor: (Width: 50, Height: 24, Right: 3);
+        Style: @FilterActive;
+      }
+      TextButton #Filter0 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24, Right: 3);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+      TextButton #Filter1 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24, Right: 3);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+      TextButton #Filter2 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24, Right: 3);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+      TextButton #Filter3 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24, Right: 3);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+      TextButton #Filter4 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24, Right: 3);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+      TextButton #Filter5 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24, Right: 3);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+      TextButton #Filter6 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24, Right: 3);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+      TextButton #Filter7 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24, Right: 3);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+      TextButton #Filter8 {
+        Text: "";
+        Anchor: (Width: 90, Height: 24);
+        Style: @FilterBtn;
+        Visible: false;
+      }
+    }
+
+    // Scrollable content area
+    Group #ContentArea {
+      FlexWeight: 1;
+      LayoutMode: TopScrolling;
+      Padding: (Full: 8);
+      ScrollbarStyle: $C.@DefaultScrollbarStyle;
+
+      // Rows populated dynamically via appendInline
+      Label #EmptyLabel {
+        Text: "No listings found";
+        Style: (FontSize: 14, TextColor: #888888, HorizontalAlignment: Center);
+        Anchor: (Height: 40);
+        Visible: false;
+      }
+    }
+
+    // Footer: pagination + create button
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 40);
+      Background: #1a2332;
+      Padding: (Horizontal: 10, Vertical: 5);
+
+      TextButton #PrevPageBtn {
+        Text: "< Prev";
+        Anchor: (Width: 70, Height: 28);
+        Style: @NavBtn;
+        Visible: false;
+      }
+
+      Group { FlexWeight: 1; }
+
+      Label #PageInfo {
+        Text: "";
+        Style: (FontSize: 12, TextColor: #888888, HorizontalAlignment: Center, VerticalAlignment: Center);
+        Anchor: (Width: 120);
+      }
+
+      Group { FlexWeight: 1; }
+
+      TextButton #CreateBtn {
+        Text: "+ Create Listing";
+        Anchor: (Width: 130, Height: 28);
+        Style: @ActionBtn;
+        Visible: false;
+      }
+
+      TextButton #NextPageBtn {
+        Text: "Next >";
+        Anchor: (Width: 70, Height: 28);
+        Style: @NavBtn;
+        Visible: false;
+      }
+    }
+  }
+}

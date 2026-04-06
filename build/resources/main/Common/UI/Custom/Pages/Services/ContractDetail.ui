@@ -1,0 +1,209 @@
+$C = "../../Common.ui";
+
+@ActionBtn = TextButtonStyle(
+  Default: (Background: #4A9E5C, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5CB870, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3C8048, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@DangerBtn = TextButtonStyle(
+  Default: (Background: #C83232, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #E04040, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #A02828, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+@BackBtn = TextButtonStyle(
+  Default: (Background: #4a5568, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Hovered: (Background: #5a6578, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Pressed: (Background: #3a4558, LabelStyle: (FontSize: 13, TextColor: #ffffff, RenderBold: false, HorizontalAlignment: Center, VerticalAlignment: Center)),
+  Sounds: $C.@ButtonSounds,
+);
+
+$C.@PageOverlay {
+
+  Group {
+    Anchor: (Width: 480, Height: 400);
+    Background: #141c26(0.98);
+    LayoutMode: Top;
+
+    // Header
+    Group {
+      Anchor: (Height: 40);
+      Background: #1a2332;
+      Padding: (Horizontal: 12);
+
+      Label {
+        Text: "Contract Details";
+        Style: (FontSize: 18, TextColor: #ffffff, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    Group { Anchor: (Height: 10); }
+
+    // Status badge
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 28);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Status:";
+        Anchor: (Width: 80);
+        Style: (FontSize: 13, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #StatusLabel {
+        Text: "Requested";
+        Style: (FontSize: 13, TextColor: #FFD700, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    // Service title
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 28);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Service:";
+        Anchor: (Width: 80);
+        Style: (FontSize: 13, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #ServiceTitle {
+        Text: "";
+        Style: (FontSize: 13, TextColor: #ffffff, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    // Provider
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 24);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Provider:";
+        Anchor: (Width: 80);
+        Style: (FontSize: 12, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #ProviderLabel {
+        Text: "";
+        Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center);
+      }
+    }
+
+    // Client
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 24);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Client:";
+        Anchor: (Width: 80);
+        Style: (FontSize: 12, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #ClientLabel {
+        Text: "";
+        Style: (FontSize: 12, TextColor: #ffffff, VerticalAlignment: Center);
+      }
+    }
+
+    // Price
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 24);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Price:";
+        Anchor: (Width: 80);
+        Style: (FontSize: 12, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #PriceLabel {
+        Text: "0 coins";
+        Style: (FontSize: 12, TextColor: #FFD700, RenderBold: true, VerticalAlignment: Center);
+      }
+    }
+
+    // Notes
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 24);
+      Padding: (Horizontal: 16);
+
+      Label {
+        Text: "Notes:";
+        Anchor: (Width: 80);
+        Style: (FontSize: 12, TextColor: #96a9be, VerticalAlignment: Center);
+      }
+      Label #NotesLabel {
+        Text: "None";
+        Style: (FontSize: 12, TextColor: #bbbbbb, VerticalAlignment: Center);
+      }
+    }
+
+    Group { Anchor: (Height: 1); Background: #2b3542; Padding: (Horizontal: 16); }
+    Group { Anchor: (Height: 8); }
+
+    // Action buttons (all hidden by default, shown based on role + status)
+    Group #ActionRow {
+      LayoutMode: Left;
+      Anchor: (Height: 40);
+      Padding: (Horizontal: 16, Vertical: 4);
+
+      TextButton #AcceptBtn {
+        Text: "Accept";
+        Anchor: (Width: 90, Height: 32, Right: 6);
+        Style: @ActionBtn;
+        Visible: false;
+      }
+
+      TextButton #DeclineBtn {
+        Text: "Decline";
+        Anchor: (Width: 90, Height: 32, Right: 6);
+        Style: @DangerBtn;
+        Visible: false;
+      }
+
+      TextButton #StartBtn {
+        Text: "Start Work";
+        Anchor: (Width: 100, Height: 32, Right: 6);
+        Style: @ActionBtn;
+        Visible: false;
+      }
+
+      TextButton #CompleteBtn {
+        Text: "Complete";
+        Anchor: (Width: 90, Height: 32, Right: 6);
+        Style: @ActionBtn;
+        Visible: false;
+      }
+
+      TextButton #CancelContractBtn {
+        Text: "Cancel";
+        Anchor: (Width: 90, Height: 32);
+        Style: @DangerBtn;
+        Visible: false;
+      }
+    }
+
+    Group { FlexWeight: 1; }
+
+    // Footer
+    Group {
+      LayoutMode: Left;
+      Anchor: (Height: 44);
+      Padding: (Horizontal: 16, Vertical: 6);
+
+      TextButton #BackBtn {
+        Text: "< Back";
+        Anchor: (Width: 80, Height: 32);
+        Style: @BackBtn;
+      }
+
+      Group { FlexWeight: 1; }
+    }
+  }
+}
